@@ -1,112 +1,68 @@
-body{
+body {
     margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Garante que não haverá scroll horizontal */
+}
+
+.hamburger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: -1000;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Esconde completamente fora da tela */
+    width: 20%;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    transition: right 0.3s ease-in-out;
+    z-index: 999;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.side-menu ul {
+    list-style-type: none;
     padding: 0;
-    font-family: sans-serif;
-    overflow: hidden;
-    background: #111;
-  }
-  div{
-    box-sizing: border-box;
-  }
-  nav{
-    background: #333;
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
-    color: #fff;
-  }
-  .nav-links {
-      display: flex;
-      justify-content:space-around;
-      width: 50%;
-      text-transform: uppercase;
-  }
-  .nav-links a{
-    display: block;
-     text-transform: uppercase;
-     text-decoration: none;
-     color: #fff;
-    border-bottom:2px solid transparent;
-    transition:0.5s ease;
-    transform: translateX(0%);
-  }
-  .nav-links a:hover{
-    color:#38b8ff;
-    letter-spacing: 5px;
-  }
-  .burger{
-    display: none;
-  }
-  .burger div{
-    width: 25px;
-    height: 3px;
-    background: #fff;
-    margin: 5px;
-    transition:all 0.5s ease;
-  }
-  @media only screen and (max-width: 760px){
-     nav{
-      justify-content: space-between;
-      padding: 0 5vw;
-    }
-    .nav-links{
-      position: absolute;
-      right: 0;
-      top:8vh;
-      min-height:92vh;
-      background: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;   
-      width: 50%;
-      margin: 0;
-      padding: 0;
-      transform: translateX(100%);
-      transition:All 0.5s ease-in;
-    }
-    .nav-links a{
-      opacity: 0;
-   
-    }
-    .burger{
-      display: block;
-    }
-   
-  }
-  @media only screen and (max-width: 640px){
-    nav{
-      justify-content: space-between;
-      padding: 0 5vw;
-    }
-  }
-  .nav-active{
-    transform: translateX(0);
-  }
-  @media only screen and (max-width: 460px){
-    .nav-links{
-      width: 100%;
-      transition:All 0.5s ease;
-    }
-  }
-  .nav-active{
-    transform: translateX(0);
-  }
-  @keyframes navLinkFade{
-    from{
-      opacity: 0;
-      transform: translateX(50px);
-    }
-    to{
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  .toggle .line1{
-     transform: rotate(-45deg) translate(-5px,6px );
-  }
-  .toggle .line2{
-     opacity: 0;
-  }
-  .toggle .line3{
-     transform: rotate(45deg) translate(-5px,-6px );
-  }
+    margin: 0;
+}
+
+.side-menu li {
+    margin: 20px 0;
+}
+
+.side-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.side-menu a:hover {
+    text-decoration: underline;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+
+}
+
+.side-menu.open {
+    right: 0; /* Move o menu para dentro da tela */
+}

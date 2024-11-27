@@ -1,33 +1,24 @@
-const navSlide = () => {
-    const burger = document.querySelector(".burger");
-    const nav = document.querySelector(".nav-links");
-    const navLinks = document.querySelectorAll(".nav-links a");
+document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.getElementById("menuButton");
+    const sideMenu = document.getElementById("sideMenu");
+    const closeButton = document.getElementById("closeButton");
+    const body = document.body;
 
-    burger.addEventListener("click", () => {
-        nav.classList.toggle("nav-active");
-
-        navLinks.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = "";
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
-            }
-        });
-
-        burger.classList.toggle("toggle");
+    menuButton.addEventListener("click", () => {
+        sideMenu.classList.add("open");
+        body.style.overflow = "hidden"; // Impede rolagem
     });
 
-    // Fechar o menu ao clicar fora
-    document.addEventListener("click", (e) => {
-        if (!nav.contains(e.target) && !burger.contains(e.target)) {
-            nav.classList.remove("nav-active");
-            burger.classList.remove("toggle");
-            
-            navLinks.forEach((link) => {
-                link.style.animation = "";
-            });
+    closeButton.addEventListener("click", () => {
+        sideMenu.classList.remove("open");
+        body.style.overflow = ""; // Restaura rolagem
+    });
+
+    // Fecha o menu ao clicar fora dele
+    window.addEventListener("click", (e) => {
+        if (!sideMenu.contains(e.target) && e.target !== menuButton) {
+            sideMenu.classList.remove("open");
+            body.style.overflow = ""; // Restaura rolagem
         }
     });
-};
-
-navSlide();
+});
