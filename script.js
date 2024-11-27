@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Fecha o menu ao clicar fora dele
     window.addEventListener("click", (e) => {
-        if (!sideMenu.contains(e.target) && e.target !== menuButton) {
+        if (!sideMenu.contains(e.target) && e.target !== menuButton && !menuButton.contains(e.target)) {
             sideMenu.classList.remove("open");
             body.style.overflow = ""; // Restaura rolagem
         }
