@@ -1,35 +1,60 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    overflow-x: hidden; /* Garante que não haverá scroll horizontal */
+    overflow-x: hidden; /* Impede o scroll horizontal */
 }
 
-.hamburger{
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    font-size: 24px;
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    z-index: -1000;
+.slot {
+    width: 100vw;
+    background: greenyellow;
+    height: 100vh; /* Usando a altura total da tela */
+    display: flex;
+    justify-content: center;
+}
+
+.body {
+    background: greenyellow;
+    width: 33.4%; /* A largura será 50% da tela */
+    height: 100vh; /* A altura será 100% da tela */
+    position: absolute; /* Faz com que ela se posicione de maneira absoluta */
+    right: 0; /* Posiciona a div.body no lado direito da tela */
+    z-index: 1; /* Garante que a body fique acima de outros elementos */
+}
+
+.container {
+    position: relative; /* Torna a posição da container relativa */
+    width: 450px;
+    background: red;
+    height: 100vh;
+}
+
+.button {
+    width: 100%;
+    background: green;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button button {
+    margin: 10px;
 }
 
 .side-menu {
-    position: fixed;
+    position: absolute; /* Agora é posicionado relativo à container */
     top: 0;
-    right: -100%; /* Esconde completamente fora da tela */
-    width: 20%;
-    height: 100%;
+    right: -100%; /* Começa completamente fora da tela, do lado direito da container */
+    width: 70%; /* Ajuste conforme necessário */
+   height: 100vh;
     background-color: #333;
     color: white;
-    transition: right 0.3s ease-in-out;
-    z-index: 999;
-    padding: 20px;
+    transition: right 0.3s ease-in-out; /* Transição suave */
+        padding-right: 20px;
+        padding-left: 20px;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -61,9 +86,18 @@ body {
     background: none;
     border: none;
     color: white;
-
+    cursor: pointer;
 }
 
 .side-menu.open {
-    right: 0; /* Move o menu para dentro da tela */
+    right: 0; /* Quando ativo, move para dentro da tela */
+}
+
+@media (max-width:750px){
+    .container{
+        width: 100%;
+    }
+    .body{
+        display: none;
+    }
 }
